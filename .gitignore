@@ -4,6 +4,7 @@
 .settings/
 target/
 /wallet/
+card/
 *.properties
 src/test/fixtures/crypto-material/crypto-config/
 src/test/fixtures/crypto-material/genesis.block

@@ -3,11 +3,17 @@ package org.kong;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import org.apache.log4j.BasicConfigurator;
+import org.kong.channel.FabricUser;
 import org.kong.proto.RegisterGrpc;
 import org.kong.proto.RegisterReq;
 import org.kong.proto.RegisterResp;
+import org.kong.wallet.WalletConfig;
+import org.kong.wallet.WalletRepository;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Logger;
 
 public class RegisterServer {
@@ -53,10 +59,31 @@ public class RegisterServer {
     static class RegisterImpl extends RegisterGrpc.RegisterImplBase {
         @Override
         public void register(RegisterReq req, StreamObserver<RegisterResp> responseObserver) {
-            System.out.println("Received UserName:" + req.getUsername());
-            RegisterResp resp = RegisterResp.newBuilder().setCode(111).build();
+            logger.info("Received UserName:" + req.getUsername());
+            RegisterResp resp;
+            try {
+                registerUser(req.getUsername());
+                resp = RegisterResp.newBuilder().setCode(0).build();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp = RegisterResp.newBuilder().setCode(-1).build();
+            }
             responseObserver.onNext(resp);
             responseObserver.onCompleted();
+        }
+
+        public void registerUser(String username) throws Exception {
+            BasicConfigurator.configure();
+            // String basic = "/home/kong/goworks/src/github.com/hyperledger/fabric-samples/basic-network/";
+            Path connectionFilePath = Paths.get("./", "connection.json");
+            ConnectionProfile connectionProfile = new ConnectionProfile(connectionFilePath.toFile());
+            WalletConfig walletConfig = new WalletConfig(username, Paths.get("./card"), true);
+            WalletRepository walletRepository = new WalletRepository(
+                    walletConfig, connectionProfile.getNetworkConfig().getClientOrganization());
+
+            FabricUser fabricUser = walletRepository.registerUser();
+            logger.info("registerUser: " + fabricUser.getName());
         }
     }
 }
