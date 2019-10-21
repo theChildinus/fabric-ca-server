@@ -3,8 +3,8 @@
 
 package org.kong.proto;
 
-public interface RegisterReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:proto.RegisterReq)
+public interface DownloadReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:proto.DownloadReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**

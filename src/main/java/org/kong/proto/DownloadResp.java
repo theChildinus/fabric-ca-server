@@ -4,19 +4,19 @@
 package org.kong.proto;
 
 /**
- * Protobuf type {@code proto.RegisterResp}
+ * Protobuf type {@code proto.DownloadResp}
  */
-public  final class RegisterResp extends
+public  final class DownloadResp extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:proto.RegisterResp)
-    RegisterRespOrBuilder {
+    // @@protoc_insertion_point(message_implements:proto.DownloadResp)
+    DownloadRespOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use RegisterResp.newBuilder() to construct.
-  private RegisterResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DownloadResp.newBuilder() to construct.
+  private DownloadResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private RegisterResp() {
-    code_ = 0L;
+  private DownloadResp() {
+    card_ = "";
   }
 
   @java.lang.Override
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private RegisterResp(
+  private DownloadResp(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -50,9 +50,10 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            code_ = input.readInt64();
+            card_ = s;
             break;
           }
         }
@@ -69,23 +70,48 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_descriptor;
+    return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_fieldAccessorTable
+    return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            org.kong.proto.RegisterResp.class, org.kong.proto.RegisterResp.Builder.class);
+            org.kong.proto.DownloadResp.class, org.kong.proto.DownloadResp.Builder.class);
   }
 
-  public static final int CODE_FIELD_NUMBER = 1;
-  private long code_;
+  public static final int CARD_FIELD_NUMBER = 1;
+  private volatile java.lang.Object card_;
   /**
-   * <code>int64 code = 1;</code>
+   * <code>string card = 1;</code>
    */
-  public long getCode() {
-    return code_;
+  public java.lang.String getCard() {
+    java.lang.Object ref = card_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      card_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string card = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getCardBytes() {
+    java.lang.Object ref = card_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      card_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -100,8 +126,8 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (code_ != 0L) {
-      output.writeInt64(1, code_);
+    if (!getCardBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, card_);
     }
     unknownFields.writeTo(output);
   }
@@ -111,9 +137,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (code_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, code_);
+    if (!getCardBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, card_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -125,14 +150,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof org.kong.proto.RegisterResp)) {
+    if (!(obj instanceof org.kong.proto.DownloadResp)) {
       return super.equals(obj);
     }
-    org.kong.proto.RegisterResp other = (org.kong.proto.RegisterResp) obj;
+    org.kong.proto.DownloadResp other = (org.kong.proto.DownloadResp) obj;
 
     boolean result = true;
-    result = result && (getCode()
-        == other.getCode());
+    result = result && getCard()
+        .equals(other.getCard());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -144,77 +169,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CODE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCode());
+    hash = (37 * hash) + CARD_FIELD_NUMBER;
+    hash = (53 * hash) + getCard().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.kong.proto.RegisterResp parseFrom(byte[] data)
+  public static org.kong.proto.DownloadResp parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.kong.proto.RegisterResp parseFrom(java.io.InputStream input)
+  public static org.kong.proto.DownloadResp parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.kong.proto.RegisterResp parseDelimitedFrom(java.io.InputStream input)
+  public static org.kong.proto.DownloadResp parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static org.kong.proto.RegisterResp parseDelimitedFrom(
+  public static org.kong.proto.DownloadResp parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.kong.proto.RegisterResp parseFrom(
+  public static org.kong.proto.DownloadResp parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -226,7 +250,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(org.kong.proto.RegisterResp prototype) {
+  public static Builder newBuilder(org.kong.proto.DownloadResp prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -241,25 +265,25 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code proto.RegisterResp}
+   * Protobuf type {@code proto.DownloadResp}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:proto.RegisterResp)
-      org.kong.proto.RegisterRespOrBuilder {
+      // @@protoc_insertion_point(builder_implements:proto.DownloadResp)
+      org.kong.proto.DownloadRespOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_descriptor;
+      return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_fieldAccessorTable
+      return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.kong.proto.RegisterResp.class, org.kong.proto.RegisterResp.Builder.class);
+              org.kong.proto.DownloadResp.class, org.kong.proto.DownloadResp.Builder.class);
     }
 
-    // Construct using org.kong.proto.RegisterResp.newBuilder()
+    // Construct using org.kong.proto.DownloadResp.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -276,31 +300,31 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      code_ = 0L;
+      card_ = "";
 
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_descriptor;
+      return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_descriptor;
     }
 
-    public org.kong.proto.RegisterResp getDefaultInstanceForType() {
-      return org.kong.proto.RegisterResp.getDefaultInstance();
+    public org.kong.proto.DownloadResp getDefaultInstanceForType() {
+      return org.kong.proto.DownloadResp.getDefaultInstance();
     }
 
-    public org.kong.proto.RegisterResp build() {
-      org.kong.proto.RegisterResp result = buildPartial();
+    public org.kong.proto.DownloadResp build() {
+      org.kong.proto.DownloadResp result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public org.kong.proto.RegisterResp buildPartial() {
-      org.kong.proto.RegisterResp result = new org.kong.proto.RegisterResp(this);
-      result.code_ = code_;
+    public org.kong.proto.DownloadResp buildPartial() {
+      org.kong.proto.DownloadResp result = new org.kong.proto.DownloadResp(this);
+      result.card_ = card_;
       onBuilt();
       return result;
     }
@@ -332,18 +356,19 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof org.kong.proto.RegisterResp) {
-        return mergeFrom((org.kong.proto.RegisterResp)other);
+      if (other instanceof org.kong.proto.DownloadResp) {
+        return mergeFrom((org.kong.proto.DownloadResp)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(org.kong.proto.RegisterResp other) {
-      if (other == org.kong.proto.RegisterResp.getDefaultInstance()) return this;
-      if (other.getCode() != 0L) {
-        setCode(other.getCode());
+    public Builder mergeFrom(org.kong.proto.DownloadResp other) {
+      if (other == org.kong.proto.DownloadResp.getDefaultInstance()) return this;
+      if (!other.getCard().isEmpty()) {
+        card_ = other.card_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -358,11 +383,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.kong.proto.RegisterResp parsedMessage = null;
+      org.kong.proto.DownloadResp parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.kong.proto.RegisterResp) e.getUnfinishedMessage();
+        parsedMessage = (org.kong.proto.DownloadResp) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -372,28 +397,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long code_ ;
+    private java.lang.Object card_ = "";
     /**
-     * <code>int64 code = 1;</code>
+     * <code>string card = 1;</code>
      */
-    public long getCode() {
-      return code_;
+    public java.lang.String getCard() {
+      java.lang.Object ref = card_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        card_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int64 code = 1;</code>
+     * <code>string card = 1;</code>
      */
-    public Builder setCode(long value) {
-      
-      code_ = value;
+    public com.google.protobuf.ByteString
+        getCardBytes() {
+      java.lang.Object ref = card_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        card_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string card = 1;</code>
+     */
+    public Builder setCard(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      card_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 code = 1;</code>
+     * <code>string card = 1;</code>
      */
-    public Builder clearCode() {
+    public Builder clearCard() {
       
-      code_ = 0L;
+      card_ = getDefaultInstance().getCard();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string card = 1;</code>
+     */
+    public Builder setCardBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      card_ = value;
       onChanged();
       return this;
     }
@@ -408,39 +476,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:proto.RegisterResp)
+    // @@protoc_insertion_point(builder_scope:proto.DownloadResp)
   }
 
-  // @@protoc_insertion_point(class_scope:proto.RegisterResp)
-  private static final org.kong.proto.RegisterResp DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:proto.DownloadResp)
+  private static final org.kong.proto.DownloadResp DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new org.kong.proto.RegisterResp();
+    DEFAULT_INSTANCE = new org.kong.proto.DownloadResp();
   }
 
-  public static org.kong.proto.RegisterResp getDefaultInstance() {
+  public static org.kong.proto.DownloadResp getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RegisterResp>
-      PARSER = new com.google.protobuf.AbstractParser<RegisterResp>() {
-    public RegisterResp parsePartialFrom(
+  private static final com.google.protobuf.Parser<DownloadResp>
+      PARSER = new com.google.protobuf.AbstractParser<DownloadResp>() {
+    public DownloadResp parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new RegisterResp(input, extensionRegistry);
+      return new DownloadResp(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<RegisterResp> parser() {
+  public static com.google.protobuf.Parser<DownloadResp> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<RegisterResp> getParserForType() {
+  public com.google.protobuf.Parser<DownloadResp> getParserForType() {
     return PARSER;
   }
 
-  public org.kong.proto.RegisterResp getDefaultInstanceForType() {
+  public org.kong.proto.DownloadResp getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
