@@ -70,12 +70,12 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_descriptor;
+    return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadResp_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_fieldAccessorTable
+    return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadResp_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             org.kong.proto.DownloadResp.class, org.kong.proto.DownloadResp.Builder.class);
   }
@@ -273,12 +273,12 @@ private static final long serialVersionUID = 0L;
       org.kong.proto.DownloadRespOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadResp_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_fieldAccessorTable
+      return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.kong.proto.DownloadResp.class, org.kong.proto.DownloadResp.Builder.class);
     }
@@ -307,7 +307,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.kong.proto.RegisterProto.internal_static_proto_DownloadResp_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadResp_descriptor;
     }
 
     public org.kong.proto.DownloadResp getDefaultInstanceForType() {

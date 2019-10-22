@@ -69,12 +69,12 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_descriptor;
+    return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterResp_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_fieldAccessorTable
+    return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterResp_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             org.kong.proto.RegisterResp.class, org.kong.proto.RegisterResp.Builder.class);
   }
@@ -249,12 +249,12 @@ private static final long serialVersionUID = 0L;
       org.kong.proto.RegisterRespOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterResp_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_fieldAccessorTable
+      return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.kong.proto.RegisterResp.class, org.kong.proto.RegisterResp.Builder.class);
     }
@@ -283,7 +283,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.kong.proto.RegisterProto.internal_static_proto_RegisterResp_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterResp_descriptor;
     }
 
     public org.kong.proto.RegisterResp getDefaultInstanceForType() {

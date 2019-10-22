@@ -3,8 +3,8 @@
 
 package org.kong.proto;
 
-public interface DownloadReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:proto.DownloadReq)
+public interface LoginReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:proto.LoginReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -21,4 +21,14 @@ public interface DownloadReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getUsernameBytes();
+
+  /**
+   * <code>string userhash = 3;</code>
+   */
+  java.lang.String getUserhash();
+  /**
+   * <code>string userhash = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getUserhashBytes();
 }

@@ -100,6 +100,22 @@ public class FabricService {
             responseObserver.onCompleted();
         }
 
+        @Override
+        public void login(LoginReq req, StreamObserver<LoginResp> responseObserver) {
+            logger.info("Received UserName:" + req.getUsername());
+            LoginResp resp;
+            try {
+                loginUser(req.getUsername());
+                resp = LoginResp.newBuilder().setCode(0).build();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp = LoginResp.newBuilder().setCode(-1).build();
+            }
+            responseObserver.onNext(resp);
+            responseObserver.onCompleted();
+        }
+
         public void registerUser(String username) throws Exception {
             BasicConfigurator.configure();
             // String basic = "/home/kong/goworks/src/github.com/hyperledger/fabric-samples/basic-network/";
@@ -114,6 +130,24 @@ public class FabricService {
                 logger.info("registerUser " + fabricUser.getName() + " Success");
             } else {
                 logger.info("registerUser " + username + " Failed");
+            }
+
+        }
+
+        public void loginUser(String username) throws Exception {
+            BasicConfigurator.configure();
+            // String basic = "/home/kong/goworks/src/github.com/hyperledger/fabric-samples/basic-network/";
+            Path connectionFilePath = Paths.get("./", "connection.json");
+            ConnectionProfile connectionProfile = new ConnectionProfile(connectionFilePath.toFile());
+            WalletConfig walletConfig = new WalletConfig(username, Paths.get("./card"), true);
+            WalletRepository walletRepository = new WalletRepository(
+                    walletConfig, connectionProfile.getNetworkConfig().getClientOrganization());
+
+            FabricUser fabricUser = walletRepository.reEnrollUser();
+            if (fabricUser != null) {
+                logger.info("reEnrollUser " + fabricUser.getName() + " Success");
+            } else {
+                logger.info("reEnrollUser " + username + " Failed");
             }
 
         }

@@ -4,20 +4,21 @@
 package org.kong.proto;
 
 /**
- * Protobuf type {@code proto.RegisterReq}
+ * Protobuf type {@code proto.LoginReq}
  */
-public  final class RegisterReq extends
+public  final class LoginReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:proto.RegisterReq)
-    RegisterReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:proto.LoginReq)
+    LoginReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use RegisterReq.newBuilder() to construct.
-  private RegisterReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use LoginReq.newBuilder() to construct.
+  private LoginReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private RegisterReq() {
+  private LoginReq() {
     userid_ = 0L;
     username_ = "";
+    userhash_ = "";
   }
 
   @java.lang.Override
@@ -25,7 +26,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private RegisterReq(
+  private LoginReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -62,6 +63,12 @@ private static final long serialVersionUID = 0L;
             username_ = s;
             break;
           }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            userhash_ = s;
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -76,14 +83,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterReq_descriptor;
+    return org.kong.proto.FabricServiceProto.internal_static_proto_LoginReq_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterReq_fieldAccessorTable
+    return org.kong.proto.FabricServiceProto.internal_static_proto_LoginReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            org.kong.proto.RegisterReq.class, org.kong.proto.RegisterReq.Builder.class);
+            org.kong.proto.LoginReq.class, org.kong.proto.LoginReq.Builder.class);
   }
 
   public static final int USERID_FIELD_NUMBER = 1;
@@ -129,6 +136,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int USERHASH_FIELD_NUMBER = 3;
+  private volatile java.lang.Object userhash_;
+  /**
+   * <code>string userhash = 3;</code>
+   */
+  public java.lang.String getUserhash() {
+    java.lang.Object ref = userhash_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      userhash_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string userhash = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getUserhashBytes() {
+    java.lang.Object ref = userhash_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      userhash_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -147,6 +188,9 @@ private static final long serialVersionUID = 0L;
     if (!getUsernameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
     }
+    if (!getUserhashBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userhash_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -162,6 +206,9 @@ private static final long serialVersionUID = 0L;
     if (!getUsernameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
     }
+    if (!getUserhashBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userhash_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -172,16 +219,18 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof org.kong.proto.RegisterReq)) {
+    if (!(obj instanceof org.kong.proto.LoginReq)) {
       return super.equals(obj);
     }
-    org.kong.proto.RegisterReq other = (org.kong.proto.RegisterReq) obj;
+    org.kong.proto.LoginReq other = (org.kong.proto.LoginReq) obj;
 
     boolean result = true;
     result = result && (getUserid()
         == other.getUserid());
     result = result && getUsername()
         .equals(other.getUsername());
+    result = result && getUserhash()
+        .equals(other.getUserhash());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -198,74 +247,76 @@ private static final long serialVersionUID = 0L;
         getUserid());
     hash = (37 * hash) + USERNAME_FIELD_NUMBER;
     hash = (53 * hash) + getUsername().hashCode();
+    hash = (37 * hash) + USERHASH_FIELD_NUMBER;
+    hash = (53 * hash) + getUserhash().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.kong.proto.RegisterReq parseFrom(byte[] data)
+  public static org.kong.proto.LoginReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static org.kong.proto.RegisterReq parseFrom(java.io.InputStream input)
+  public static org.kong.proto.LoginReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.kong.proto.RegisterReq parseDelimitedFrom(java.io.InputStream input)
+  public static org.kong.proto.LoginReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static org.kong.proto.RegisterReq parseDelimitedFrom(
+  public static org.kong.proto.LoginReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static org.kong.proto.RegisterReq parseFrom(
+  public static org.kong.proto.LoginReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -277,7 +328,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(org.kong.proto.RegisterReq prototype) {
+  public static Builder newBuilder(org.kong.proto.LoginReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -292,25 +343,25 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code proto.RegisterReq}
+   * Protobuf type {@code proto.LoginReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:proto.RegisterReq)
-      org.kong.proto.RegisterReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:proto.LoginReq)
+      org.kong.proto.LoginReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterReq_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_LoginReq_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterReq_fieldAccessorTable
+      return org.kong.proto.FabricServiceProto.internal_static_proto_LoginReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.kong.proto.RegisterReq.class, org.kong.proto.RegisterReq.Builder.class);
+              org.kong.proto.LoginReq.class, org.kong.proto.LoginReq.Builder.class);
     }
 
-    // Construct using org.kong.proto.RegisterReq.newBuilder()
+    // Construct using org.kong.proto.LoginReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -331,30 +382,33 @@ private static final long serialVersionUID = 0L;
 
       username_ = "";
 
+      userhash_ = "";
+
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.kong.proto.FabricServiceProto.internal_static_proto_RegisterReq_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_LoginReq_descriptor;
     }
 
-    public org.kong.proto.RegisterReq getDefaultInstanceForType() {
-      return org.kong.proto.RegisterReq.getDefaultInstance();
+    public org.kong.proto.LoginReq getDefaultInstanceForType() {
+      return org.kong.proto.LoginReq.getDefaultInstance();
     }
 
-    public org.kong.proto.RegisterReq build() {
-      org.kong.proto.RegisterReq result = buildPartial();
+    public org.kong.proto.LoginReq build() {
+      org.kong.proto.LoginReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public org.kong.proto.RegisterReq buildPartial() {
-      org.kong.proto.RegisterReq result = new org.kong.proto.RegisterReq(this);
+    public org.kong.proto.LoginReq buildPartial() {
+      org.kong.proto.LoginReq result = new org.kong.proto.LoginReq(this);
       result.userid_ = userid_;
       result.username_ = username_;
+      result.userhash_ = userhash_;
       onBuilt();
       return result;
     }
@@ -386,21 +440,25 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof org.kong.proto.RegisterReq) {
-        return mergeFrom((org.kong.proto.RegisterReq)other);
+      if (other instanceof org.kong.proto.LoginReq) {
+        return mergeFrom((org.kong.proto.LoginReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(org.kong.proto.RegisterReq other) {
-      if (other == org.kong.proto.RegisterReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(org.kong.proto.LoginReq other) {
+      if (other == org.kong.proto.LoginReq.getDefaultInstance()) return this;
       if (other.getUserid() != 0L) {
         setUserid(other.getUserid());
       }
       if (!other.getUsername().isEmpty()) {
         username_ = other.username_;
+        onChanged();
+      }
+      if (!other.getUserhash().isEmpty()) {
+        userhash_ = other.userhash_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -416,11 +474,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.kong.proto.RegisterReq parsedMessage = null;
+      org.kong.proto.LoginReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.kong.proto.RegisterReq) e.getUnfinishedMessage();
+        parsedMessage = (org.kong.proto.LoginReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -524,6 +582,75 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private java.lang.Object userhash_ = "";
+    /**
+     * <code>string userhash = 3;</code>
+     */
+    public java.lang.String getUserhash() {
+      java.lang.Object ref = userhash_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userhash_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string userhash = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserhashBytes() {
+      java.lang.Object ref = userhash_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userhash_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string userhash = 3;</code>
+     */
+    public Builder setUserhash(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      userhash_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userhash = 3;</code>
+     */
+    public Builder clearUserhash() {
+      
+      userhash_ = getDefaultInstance().getUserhash();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userhash = 3;</code>
+     */
+    public Builder setUserhashBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      userhash_ = value;
+      onChanged();
+      return this;
+    }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFieldsProto3(unknownFields);
@@ -535,39 +662,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:proto.RegisterReq)
+    // @@protoc_insertion_point(builder_scope:proto.LoginReq)
   }
 
-  // @@protoc_insertion_point(class_scope:proto.RegisterReq)
-  private static final org.kong.proto.RegisterReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:proto.LoginReq)
+  private static final org.kong.proto.LoginReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new org.kong.proto.RegisterReq();
+    DEFAULT_INSTANCE = new org.kong.proto.LoginReq();
   }
 
-  public static org.kong.proto.RegisterReq getDefaultInstance() {
+  public static org.kong.proto.LoginReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RegisterReq>
-      PARSER = new com.google.protobuf.AbstractParser<RegisterReq>() {
-    public RegisterReq parsePartialFrom(
+  private static final com.google.protobuf.Parser<LoginReq>
+      PARSER = new com.google.protobuf.AbstractParser<LoginReq>() {
+    public LoginReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new RegisterReq(input, extensionRegistry);
+      return new LoginReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<RegisterReq> parser() {
+  public static com.google.protobuf.Parser<LoginReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<RegisterReq> getParserForType() {
+  public com.google.protobuf.Parser<LoginReq> getParserForType() {
     return PARSER;
   }
 
-  public org.kong.proto.RegisterReq getDefaultInstanceForType() {
+  public org.kong.proto.LoginReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

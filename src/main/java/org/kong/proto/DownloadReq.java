@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DownloadReq() {
+    userid_ = 0L;
     username_ = "";
   }
 
@@ -50,7 +51,12 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 10: {
+          case 8: {
+
+            userid_ = input.readInt64();
+            break;
+          }
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
             username_ = s;
@@ -70,20 +76,29 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return org.kong.proto.RegisterProto.internal_static_proto_DownloadReq_descriptor;
+    return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadReq_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return org.kong.proto.RegisterProto.internal_static_proto_DownloadReq_fieldAccessorTable
+    return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             org.kong.proto.DownloadReq.class, org.kong.proto.DownloadReq.Builder.class);
   }
 
-  public static final int USERNAME_FIELD_NUMBER = 1;
+  public static final int USERID_FIELD_NUMBER = 1;
+  private long userid_;
+  /**
+   * <code>int64 userid = 1;</code>
+   */
+  public long getUserid() {
+    return userid_;
+  }
+
+  public static final int USERNAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object username_;
   /**
-   * <code>string username = 1;</code>
+   * <code>string username = 2;</code>
    */
   public java.lang.String getUsername() {
     java.lang.Object ref = username_;
@@ -98,7 +113,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string username = 1;</code>
+   * <code>string username = 2;</code>
    */
   public com.google.protobuf.ByteString
       getUsernameBytes() {
@@ -126,8 +141,11 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (userid_ != 0L) {
+      output.writeInt64(1, userid_);
+    }
     if (!getUsernameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
     }
     unknownFields.writeTo(output);
   }
@@ -137,8 +155,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (userid_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(1, userid_);
+    }
     if (!getUsernameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -156,6 +178,8 @@ private static final long serialVersionUID = 0L;
     org.kong.proto.DownloadReq other = (org.kong.proto.DownloadReq) obj;
 
     boolean result = true;
+    result = result && (getUserid()
+        == other.getUserid());
     result = result && getUsername()
         .equals(other.getUsername());
     result = result && unknownFields.equals(other.unknownFields);
@@ -169,6 +193,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + USERID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getUserid());
     hash = (37 * hash) + USERNAME_FIELD_NUMBER;
     hash = (53 * hash) + getUsername().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -273,12 +300,12 @@ private static final long serialVersionUID = 0L;
       org.kong.proto.DownloadReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.kong.proto.RegisterProto.internal_static_proto_DownloadReq_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadReq_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.kong.proto.RegisterProto.internal_static_proto_DownloadReq_fieldAccessorTable
+      return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.kong.proto.DownloadReq.class, org.kong.proto.DownloadReq.Builder.class);
     }
@@ -300,6 +327,8 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
+      userid_ = 0L;
+
       username_ = "";
 
       return this;
@@ -307,7 +336,7 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return org.kong.proto.RegisterProto.internal_static_proto_DownloadReq_descriptor;
+      return org.kong.proto.FabricServiceProto.internal_static_proto_DownloadReq_descriptor;
     }
 
     public org.kong.proto.DownloadReq getDefaultInstanceForType() {
@@ -324,6 +353,7 @@ private static final long serialVersionUID = 0L;
 
     public org.kong.proto.DownloadReq buildPartial() {
       org.kong.proto.DownloadReq result = new org.kong.proto.DownloadReq(this);
+      result.userid_ = userid_;
       result.username_ = username_;
       onBuilt();
       return result;
@@ -366,6 +396,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(org.kong.proto.DownloadReq other) {
       if (other == org.kong.proto.DownloadReq.getDefaultInstance()) return this;
+      if (other.getUserid() != 0L) {
+        setUserid(other.getUserid());
+      }
       if (!other.getUsername().isEmpty()) {
         username_ = other.username_;
         onChanged();
@@ -397,9 +430,35 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private long userid_ ;
+    /**
+     * <code>int64 userid = 1;</code>
+     */
+    public long getUserid() {
+      return userid_;
+    }
+    /**
+     * <code>int64 userid = 1;</code>
+     */
+    public Builder setUserid(long value) {
+      
+      userid_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 userid = 1;</code>
+     */
+    public Builder clearUserid() {
+      
+      userid_ = 0L;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object username_ = "";
     /**
-     * <code>string username = 1;</code>
+     * <code>string username = 2;</code>
      */
     public java.lang.String getUsername() {
       java.lang.Object ref = username_;
@@ -414,7 +473,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string username = 1;</code>
+     * <code>string username = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUsernameBytes() {
@@ -430,7 +489,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string username = 1;</code>
+     * <code>string username = 2;</code>
      */
     public Builder setUsername(
         java.lang.String value) {
@@ -443,7 +502,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string username = 1;</code>
+     * <code>string username = 2;</code>
      */
     public Builder clearUsername() {
       
@@ -452,7 +511,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string username = 1;</code>
+     * <code>string username = 2;</code>
      */
     public Builder setUsernameBytes(
         com.google.protobuf.ByteString value) {

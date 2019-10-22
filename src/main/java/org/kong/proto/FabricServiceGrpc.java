@@ -91,6 +91,38 @@ public final class FabricServiceGrpc {
      return getDownloadMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<org.kong.proto.LoginReq,
+      org.kong.proto.LoginResp> getLoginMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Login",
+      requestType = org.kong.proto.LoginReq.class,
+      responseType = org.kong.proto.LoginResp.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<org.kong.proto.LoginReq,
+      org.kong.proto.LoginResp> getLoginMethod() {
+    io.grpc.MethodDescriptor<org.kong.proto.LoginReq, org.kong.proto.LoginResp> getLoginMethod;
+    if ((getLoginMethod = FabricServiceGrpc.getLoginMethod) == null) {
+      synchronized (FabricServiceGrpc.class) {
+        if ((getLoginMethod = FabricServiceGrpc.getLoginMethod) == null) {
+          FabricServiceGrpc.getLoginMethod = getLoginMethod = 
+              io.grpc.MethodDescriptor.<org.kong.proto.LoginReq, org.kong.proto.LoginResp>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "proto.FabricService", "Login"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.kong.proto.LoginReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.kong.proto.LoginResp.getDefaultInstance()))
+                  .setSchemaDescriptor(new FabricServiceMethodDescriptorSupplier("Login"))
+                  .build();
+          }
+        }
+     }
+     return getLoginMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -132,6 +164,13 @@ public final class FabricServiceGrpc {
       asyncUnimplementedUnaryCall(getDownloadMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void login(org.kong.proto.LoginReq request,
+        io.grpc.stub.StreamObserver<org.kong.proto.LoginResp> responseObserver) {
+      asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -148,6 +187,13 @@ public final class FabricServiceGrpc {
                 org.kong.proto.DownloadReq,
                 org.kong.proto.DownloadResp>(
                   this, METHODID_DOWNLOAD)))
+          .addMethod(
+            getLoginMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                org.kong.proto.LoginReq,
+                org.kong.proto.LoginResp>(
+                  this, METHODID_LOGIN)))
           .build();
     }
   }
@@ -185,6 +231,14 @@ public final class FabricServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDownloadMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void login(org.kong.proto.LoginReq request,
+        io.grpc.stub.StreamObserver<org.kong.proto.LoginResp> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -217,6 +271,13 @@ public final class FabricServiceGrpc {
     public org.kong.proto.DownloadResp download(org.kong.proto.DownloadReq request) {
       return blockingUnaryCall(
           getChannel(), getDownloadMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public org.kong.proto.LoginResp login(org.kong.proto.LoginReq request) {
+      return blockingUnaryCall(
+          getChannel(), getLoginMethod(), getCallOptions(), request);
     }
   }
 
@@ -253,10 +314,19 @@ public final class FabricServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDownloadMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<org.kong.proto.LoginResp> login(
+        org.kong.proto.LoginReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getLoginMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER = 0;
   private static final int METHODID_DOWNLOAD = 1;
+  private static final int METHODID_LOGIN = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -283,6 +353,10 @@ public final class FabricServiceGrpc {
           serviceImpl.download((org.kong.proto.DownloadReq) request,
               (io.grpc.stub.StreamObserver<org.kong.proto.DownloadResp>) responseObserver);
           break;
+        case METHODID_LOGIN:
+          serviceImpl.login((org.kong.proto.LoginReq) request,
+              (io.grpc.stub.StreamObserver<org.kong.proto.LoginResp>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -305,7 +379,7 @@ public final class FabricServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return org.kong.proto.RegisterProto.getDescriptor();
+      return org.kong.proto.FabricServiceProto.getDescriptor();
     }
 
     @java.lang.Override
@@ -346,6 +420,7 @@ public final class FabricServiceGrpc {
               .setSchemaDescriptor(new FabricServiceFileDescriptorSupplier())
               .addMethod(getRegisterMethod())
               .addMethod(getDownloadMethod())
+              .addMethod(getLoginMethod())
               .build();
         }
       }

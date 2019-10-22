@@ -8,11 +8,16 @@ public interface RegisterReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string username = 1;</code>
+   * <code>int64 userid = 1;</code>
+   */
+  long getUserid();
+
+  /**
+   * <code>string username = 2;</code>
    */
   java.lang.String getUsername();
   /**
-   * <code>string username = 1;</code>
+   * <code>string username = 2;</code>
    */
   com.google.protobuf.ByteString
       getUsernameBytes();
