@@ -78,8 +78,9 @@ public class FabricService {
         @Override
         public void download(DownloadReq req, StreamObserver<DownloadResp> responseObserver) {
             logger.info("Received UserName:" + req.getUsername());
+            String userName = req.getUsername();
             String encoding = "UTF-8";
-            File file = new File("./card/" + req.getUsername() + ".card");
+            File file = new File("./card/" + userName + "/" + userName + ".crt");
             Long filelength = file.length();
             byte[] filecontent = new byte[filelength.intValue()];
             try {
@@ -91,10 +92,10 @@ public class FabricService {
             }
             DownloadResp resp;
             try {
-                resp = DownloadResp.newBuilder().setCard(new String(filecontent, encoding)).build();
+                resp = DownloadResp.newBuilder().setCert(new String(filecontent, encoding)).build();
             } catch (Exception e) {
                 e.printStackTrace();
-                resp = DownloadResp.newBuilder().setCard("").build();
+                resp = DownloadResp.newBuilder().setCert("").build();
             }
             responseObserver.onNext(resp);
             responseObserver.onCompleted();

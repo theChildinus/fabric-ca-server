@@ -8,12 +8,12 @@ public interface DownloadRespOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string card = 1;</code>
+   * <code>string cert = 1;</code>
    */
-  java.lang.String getCard();
+  java.lang.String getCert();
   /**
-   * <code>string card = 1;</code>
+   * <code>string cert = 1;</code>
    */
   com.google.protobuf.ByteString
-      getCardBytes();
+      getCertBytes();
 }

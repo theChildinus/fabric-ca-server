@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DownloadResp() {
-    card_ = "";
+    cert_ = "";
   }
 
   @java.lang.Override
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            card_ = s;
+            cert_ = s;
             break;
           }
         }
@@ -80,34 +80,34 @@ private static final long serialVersionUID = 0L;
             org.kong.proto.DownloadResp.class, org.kong.proto.DownloadResp.Builder.class);
   }
 
-  public static final int CARD_FIELD_NUMBER = 1;
-  private volatile java.lang.Object card_;
+  public static final int CERT_FIELD_NUMBER = 1;
+  private volatile java.lang.Object cert_;
   /**
-   * <code>string card = 1;</code>
+   * <code>string cert = 1;</code>
    */
-  public java.lang.String getCard() {
-    java.lang.Object ref = card_;
+  public java.lang.String getCert() {
+    java.lang.Object ref = cert_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      card_ = s;
+      cert_ = s;
       return s;
     }
   }
   /**
-   * <code>string card = 1;</code>
+   * <code>string cert = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getCardBytes() {
-    java.lang.Object ref = card_;
+      getCertBytes() {
+    java.lang.Object ref = cert_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      card_ = b;
+      cert_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -126,8 +126,8 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getCardBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, card_);
+    if (!getCertBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, cert_);
     }
     unknownFields.writeTo(output);
   }
@@ -137,8 +137,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getCardBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, card_);
+    if (!getCertBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, cert_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -156,8 +156,8 @@ private static final long serialVersionUID = 0L;
     org.kong.proto.DownloadResp other = (org.kong.proto.DownloadResp) obj;
 
     boolean result = true;
-    result = result && getCard()
-        .equals(other.getCard());
+    result = result && getCert()
+        .equals(other.getCert());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -169,8 +169,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CARD_FIELD_NUMBER;
-    hash = (53 * hash) + getCard().hashCode();
+    hash = (37 * hash) + CERT_FIELD_NUMBER;
+    hash = (53 * hash) + getCert().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -300,7 +300,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      card_ = "";
+      cert_ = "";
 
       return this;
     }
@@ -324,7 +324,7 @@ private static final long serialVersionUID = 0L;
 
     public org.kong.proto.DownloadResp buildPartial() {
       org.kong.proto.DownloadResp result = new org.kong.proto.DownloadResp(this);
-      result.card_ = card_;
+      result.cert_ = cert_;
       onBuilt();
       return result;
     }
@@ -366,8 +366,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(org.kong.proto.DownloadResp other) {
       if (other == org.kong.proto.DownloadResp.getDefaultInstance()) return this;
-      if (!other.getCard().isEmpty()) {
-        card_ = other.card_;
+      if (!other.getCert().isEmpty()) {
+        cert_ = other.cert_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -397,71 +397,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object card_ = "";
+    private java.lang.Object cert_ = "";
     /**
-     * <code>string card = 1;</code>
+     * <code>string cert = 1;</code>
      */
-    public java.lang.String getCard() {
-      java.lang.Object ref = card_;
+    public java.lang.String getCert() {
+      java.lang.Object ref = cert_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        card_ = s;
+        cert_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string card = 1;</code>
+     * <code>string cert = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getCardBytes() {
-      java.lang.Object ref = card_;
+        getCertBytes() {
+      java.lang.Object ref = cert_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        card_ = b;
+        cert_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string card = 1;</code>
+     * <code>string cert = 1;</code>
      */
-    public Builder setCard(
+    public Builder setCert(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      card_ = value;
+      cert_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string card = 1;</code>
+     * <code>string cert = 1;</code>
      */
-    public Builder clearCard() {
+    public Builder clearCert() {
       
-      card_ = getDefaultInstance().getCard();
+      cert_ = getDefaultInstance().getCert();
       onChanged();
       return this;
     }
     /**
-     * <code>string card = 1;</code>
+     * <code>string cert = 1;</code>
      */
-    public Builder setCardBytes(
+    public Builder setCertBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      card_ = value;
+      cert_ = value;
       onChanged();
       return this;
     }

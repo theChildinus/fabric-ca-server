@@ -57,7 +57,7 @@ public final class FabricServiceProto {
       "rReq\022\016\n\006userid\030\001 \001(\003\022\020\n\010username\030\002 \001(\t\"\034" +
       "\n\014RegisterResp\022\014\n\004code\030\001 \001(\003\"/\n\013Download" +
       "Req\022\016\n\006userid\030\001 \001(\003\022\020\n\010username\030\002 \001(\t\"\034\n" +
-      "\014DownloadResp\022\014\n\004card\030\001 \001(\t\">\n\010LoginReq\022" +
+      "\014DownloadResp\022\014\n\004cert\030\001 \001(\t\">\n\010LoginReq\022" +
       "\016\n\006userid\030\001 \001(\003\022\020\n\010username\030\002 \001(\t\022\020\n\010use" +
       "rhash\030\003 \001(\t\"\031\n\tLoginResp\022\014\n\004code\030\001 \001(\0032\253" +
       "\001\n\rFabricService\0225\n\010Register\022\022.proto.Reg" +
@@ -102,7 +102,7 @@ public final class FabricServiceProto {
     internal_static_proto_DownloadResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_DownloadResp_descriptor,
-        new java.lang.String[] { "Card", });
+        new java.lang.String[] { "Cert", });
     internal_static_proto_LoginReq_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_proto_LoginReq_fieldAccessorTable = new

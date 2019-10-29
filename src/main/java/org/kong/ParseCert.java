@@ -17,7 +17,7 @@ public class ParseCert {
     public static void main(String[] args) throws Exception {
 
         String basic = System.getProperty("user.dir");
-        String fileName = basic + "/card/test2.card";
+        String fileName = basic + "/card/zhao.card";
         System.out.println(fileName);
         FabricUser fabricUser = JSONObject.parseObject(IOUtils.toString(new FileInputStream(fileName), Charset.forName("utf-8")), FabricUser.class);
         StringReader stringReader = new StringReader(fabricUser.getSignedCert());
@@ -26,8 +26,8 @@ public class ParseCert {
         CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
         InputStream inputStream = new ByteArrayInputStream(certificateHolder.getEncoded());
         X509Certificate cert = (X509Certificate) certFactory.generateCertificate(inputStream);
-        Files.write(Paths.get(basic, "/card/test2.cer"), fabricUser.getSignedCert().getBytes());
-        Files.write(Paths.get(basic, "/card/text2.pem"), fabricUser.getPrivateKey().getBytes());
+        Files.write(Paths.get(basic, "/card/zhao.cert"), fabricUser.getSignedCert().getBytes());
+        Files.write(Paths.get(basic, "/card/zhao.pem"), fabricUser.getPrivateKey().getBytes());
         String extensionValue = new String(cert.getExtensionValue("1.2.3.4.5.6.7.8.1"));
         System.out.println(extensionValue);
     }
