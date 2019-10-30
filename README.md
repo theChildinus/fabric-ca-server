@@ -1,3 +1,10 @@
+> kong
+
+- 自动生成gRPC代码：Idea 打开 maven工具，Plugins中选择 protobuf，运行 `protobuf:compile`  和 `protobuf:compile-custom`
+- 生成带依赖的jar包：`mvn assembly:assembly` ，会在根目录中生成带有 `with-dependencies` 后缀的jar包
+
+> official
+
 # Hyperledger Fabric Gateway SDK for Java
 
 The Fabric Gateway SDK allows applications to interact with a Fabric blockchain network.  It provides a simple API to submit transactions to a ledger or query the contents of a ledger with minimal code.

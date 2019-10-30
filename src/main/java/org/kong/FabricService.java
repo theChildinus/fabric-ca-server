@@ -6,13 +6,11 @@ import io.grpc.stub.StreamObserver;
 import org.kong.proto.*;
 import org.apache.log4j.BasicConfigurator;
 import org.kong.channel.FabricUser;
-import org.kong.proto.FabricServiceGrpc;
 import org.kong.wallet.WalletConfig;
 import org.kong.wallet.WalletRepository;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -34,7 +34,7 @@ public class WalletRepository {
             Path basicPath = walletConfig.getStorePath();
             File cardfile = new File(basicPath + "/" + userName + "/" + userName + ".card");
             File certfile = new File(basicPath + "/" + userName + "/" + userName + ".crt");
-            File keyfile = new File(basicPath + "/"+ userName + "/" + userName + ".key");
+            File keyfile = new File(basicPath + "/"+ userName + "/" + userName + ".pem");
             // TODO USE Wallet API
             if (!cardfile.exists()) {
                 if (!cardfile.getParentFile().mkdirs()) {
