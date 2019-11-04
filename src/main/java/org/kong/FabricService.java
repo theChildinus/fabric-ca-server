@@ -1,8 +1,10 @@
 package org.kong;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import org.kong.proto.*;
 import org.apache.log4j.BasicConfigurator;
 import org.kong.channel.FabricUser;
@@ -14,6 +16,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.logging.Logger;
 
 public class FabricService {
@@ -104,8 +112,12 @@ public class FabricService {
             logger.info("Received UserName:" + req.getUsername());
             LoginResp resp;
             try {
-                loginUser(req.getUsername());
-                resp = LoginResp.newBuilder().setCode(0).build();
+                boolean res = loginUserVerify(req.getUsername(), Base64.decode(req.getUsersign()), String.valueOf(req.getUserrand()));
+                if (res) {
+                    resp = LoginResp.newBuilder().setCode(0).build();
+                } else {
+                    resp = LoginResp.newBuilder().setCode(-1).build();
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -133,22 +145,20 @@ public class FabricService {
 
         }
 
-        public void loginUser(String username) throws Exception {
-            BasicConfigurator.configure();
-            // String basic = "/home/kong/goworks/src/github.com/hyperledger/fabric-samples/basic-network/";
-            Path connectionFilePath = Paths.get("./", "connection.json");
-            ConnectionProfile connectionProfile = new ConnectionProfile(connectionFilePath.toFile());
-            WalletConfig walletConfig = new WalletConfig(username, Paths.get("./card"), true);
-            WalletRepository walletRepository = new WalletRepository(
-                    walletConfig, connectionProfile.getNetworkConfig().getClientOrganization());
-
-            FabricUser fabricUser = walletRepository.reEnrollUser();
-            if (fabricUser != null) {
-                logger.info("reEnrollUser " + fabricUser.getName() + " Success");
-            } else {
-                logger.info("reEnrollUser " + username + " Failed");
-            }
-
+        public boolean loginUserVerify(String username, byte[] signed, String source) throws Exception {
+            System.out.println(HexBin.encode(signed));
+            String certPath = "./card/" + username + "/" + username + ".crt";
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+            X509Certificate cert = (X509Certificate)cf.generateCertificate(new FileInputStream(certPath));
+            PublicKey ecPublicKey = cert.getPublicKey();
+            X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(ecPublicKey.getEncoded());
+            KeyFactory keyFactory = KeyFactory.getInstance("EC");
+            PublicKey newPublicKey = keyFactory.generatePublic(x509EncodedKeySpec);
+            Signature signature = Signature.getInstance("SHA1withECDSA");
+            signature.initVerify(newPublicKey);
+            signature.update(source.getBytes());
+            boolean bool = signature.verify(signed);
+            return bool;
         }
     }
 }
